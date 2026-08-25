@@ -41,14 +41,14 @@ def generate_changes_table(df, event_name, total_cycle):
     print(f"Event: {event_name}")
     print(table.to_string(index=False))
 
-# Main guard
+# Define the file name below to analyze the frequency and mass change observed in each Cu or linker deposition step
 if __name__ == "__main__":
 
-    folder = Path(r"M:\deposition monitoring\ngela-024")
-    tagged_data_file = folder / "2026-Aug-14_11-54-38_fundamental_event_tagged.csv"
+    folder = Path(r"M:\deposition monitoring\ngela-025")
+    tagged_data_file = folder / "1-2026-Aug-24_15-06-19_fundamental_event_tagged.csv"
 
     df = pd.read_csv(tagged_data_file, encoding="cp1252")
-    event_name = "Linker Infuse" # Cu infuse, Linker infuse
+    event_name = "Cu Infuse" # Cu infuse, Linker infuse
     total_cycle = 10
 
     generate_changes_table(df, event_name, total_cycle)

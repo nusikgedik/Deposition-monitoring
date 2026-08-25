@@ -2,7 +2,12 @@ from pathlib import Path
 import csv
 import datetime
 
-folder = Path(r"")
+# This script will create a new csv file in project folder.
+# The new csv fill will contain the qcm data tagged with event logs to color code the monitoring graph by event.
+
+# Specify the path below, there should be only a pair of csv ang log files in directory.
+# Otherwise, csv and log files won't be correctly matched.
+folder = Path(r"M:\deposition monitoring\ngela-025")
 
 logs = {}
 

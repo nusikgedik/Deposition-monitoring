@@ -7,7 +7,7 @@ import datetime
 
 # Specify the path below, there should be only a pair of csv ang log files in directory.
 # Otherwise, csv and log files won't be correctly matched.
-folder = Path(r"M:\deposition monitoring\ngela-025")
+folder = Path(r"M:\deposition monitoring\ngela-028")
 
 logs = {}
 

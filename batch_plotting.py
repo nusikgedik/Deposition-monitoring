@@ -11,7 +11,7 @@ SUBSAMPLE_LEVEL = 0
 
 # Two plotting options are available: versus relative time or versus deposition step no
 
-path = Path(r"M:\deposition monitoring")
+path = Path(r"M:\deposition monitoring\ngela-025")
 
 data = {} # example: {folder_name: {file_name: {relative time : [], f0: [], event name: [], step number: [],
                                     # step_range: int, f0_length_each_step: {step_number: int}}}}
@@ -61,7 +61,8 @@ for folder in path.iterdir():
 
                 data[folder.name][file.name] = file_dict
 
-print(data)
+#print(data)
+
 
 # Plot experiments vs relative time
 plt.figure()
@@ -89,6 +90,7 @@ for folder in data.keys():
     for file in data[folder].keys():
         x = []
         y = data[folder][file]["f0"]
+        print(len(y))
         # Generate the x-axis data points
         # Go through the step_number in each row
         # If it is identical to the previous step_no continue
@@ -96,12 +98,16 @@ for folder in data.keys():
         last_step_number = 0
         for step_number in data[folder][file]['step_number']:
             step_length = data[folder][file]['f0_length_each_step'][step_number]
-            if step_number > last_step_number:
+            if step_number != 0 and step_number > last_step_number:
+                print(f"{last_step_number=}")
+                print(f"{step_number=}")
                 last_step_number = step_number
-                x += np.linspace(step_number-1, step_number, step_length)
-        label = folder
-        plt.plot(x, y, label=label)
+                x.extend(np.linspace(step_number - 1, step_number, step_length))
 
+        label = folder
+        print(len(x))
+        print(len(y))
+        plt.plot(x, y, label=label)
 
 # Add legend, grid, and display
 plt.legend()
